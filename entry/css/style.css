@@ -1,0 +1,154 @@
+* {
+	margin: 0;
+	padding: 0;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+img {
+	width: 100%;
+	vertical-align: bottom;
+}
+
+header h1 {
+	padding: 50px 0;
+	font-size: 30px;
+	text-align: center;
+}
+
+main {
+	width: 800px;
+	margin: 0 auto;
+}
+
+.annai p {
+	text-align: center;
+}
+
+.required {
+	text-align: center;
+	font-size: 13px;
+}
+
+.required span {
+	color: red;
+}
+
+.form {
+	margin-top: 80px;
+	display: flex;
+}
+
+table {
+	border-collapse: separate;
+  border-spacing: 30px;
+}
+span {
+	color: red;
+}
+.form_box {
+	display: block;
+	margin-bottom: 20px;
+}
+th {
+	width: 300px;
+	text-align: left;
+	vertical-align: top;
+}
+input {
+	width: 400px;
+	height: 40px;
+	font-size: 20px;
+}
+
+td {
+	text-align: left;
+	width: 500px;
+	
+}
+
+.sex {
+	width: 60px;
+	height: 20px;
+}
+
+.sex input {
+	font-size: 20px;
+	vertical-align: middle;
+}
+
+.sex span {
+	color: #000;
+}
+
+textarea {
+	font-size: 17px;
+}
+.submitbox {
+	text-align: center;
+	margin: 50px 0 100px;
+}
+.submit {
+	width: 150px;
+  font-size: 20px;
+}
+
+.sousinbox {
+	display: flex;
+	justify-content: space-between;
+}
+.sousinbox {
+	width: 100px;
+}
+.sousin {
+	width: 100px;
+}
+
+.botan {
+  display: flex;
+  justify-content: space-evenly;
+  margin-top: 50px;
+  column-gap: 40px;
+  max-width: 800px;
+  width: 100%;
+	margin-bottom: 100px;
+}
+
+.modoru {
+  display: flex;
+  flex-direction: column;
+  width: 100px;
+  height: 45px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 0.8em;
+  text-decoration: none;
+  font-size: 20px;
+  border: 2px solid;
+  text-decoration: none;
+  color: #1f1f1f;
+}
+
+.next input {
+  width: 100px;
+  height: 45px;
+  border-radius: 0.8em;
+  font-size: 20px;
+  cursor: pointer;
+  cursor: hand;
+  color: #1f1f1f;
+  border: 2px solid;
+  border-color: #000000;
+  background-color: #d6d6d6;
+}
+
+.tyui p {
+  font-size: 20px;
+  font-weight: bold;
+  color: red;
+  text-align: center;
+}
+
+.error {
+	color: red;
+}
