@@ -81,7 +81,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     </form>
   </main>
   <footer>
-    <a href="../index.html">メインメニューへ</a>
+    <div style="margin-top: 50px">
+      <a href="../index.html">メインメニューへ</a>
+    </div>
+    <div style="margin: 50px 0">
+      <a href="../../news/index.php">Newsページへ</a>
+    </div>
   </footer>
 </body>
 

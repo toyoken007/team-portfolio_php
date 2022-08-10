@@ -61,7 +61,7 @@ $stmt->fetch();
             </li>
             <li><a href="gallery/index.html">Gallery </a>
             </li>
-            <li><a href="recruit/index.html">Recrult </a>
+            <li><a href="recruit/index.html">Recruit </a>
             </li>
             <li><a href="contact/index.html">Contact </a>
             </li>
@@ -91,7 +91,7 @@ $stmt->fetch();
           </ul>
         </div>
         <div class="news_link">
-          <p><a href="news/index.html">View more</a></p>
+          <p><a href="news/index.php">View more</a></p>
         </div>
       </div>
       <div class="concept_wrap">

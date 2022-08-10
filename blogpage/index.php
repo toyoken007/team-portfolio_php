@@ -120,6 +120,14 @@ $category = unserialize($category);
             <img src="../images/cms/<?php echo h($imgfile); ?>" alt="">
           <?php endif; ?>
         </div>
+        <div class="edit_wrap">
+          <div class="edit_box">
+            <a href="">編集</a>
+          </div>
+          <div class="edit_box">
+            <a href="">削除</a>
+          </div>
+        </div>
         <div class="newspage_share">
           <div class="share">
             <p>Share</p>

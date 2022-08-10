@@ -49,6 +49,23 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $post = $_SESSION['form'];
     $post['category'] = $_SESSION['category'];
   }
+  if (is_array($post['category'])) {
+
+    foreach ($post['category'] as $key => $value) {
+      if ($value == 'News') {
+        $chk1 = 'checked';
+      }
+      if ($value == 'お客様の髪の未来を守る') {
+        $chk2 = 'checked';
+      }
+      if ($value == 'ブログ') {
+        $chk3 = 'checked';
+      }
+      if ($value == '育毛') {
+        $chk4 = 'checked';
+      }
+    }
+  }
 }
 ?>
 <!DOCTYPE html>
@@ -67,12 +84,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   </header>
   <main>
     <form action="" method="POST">
-    <div>
+      <div>
         <h3>カテゴリー</h3>
-        <input type="checkbox" name="category[]" value="News" <?php if (isset($chk1)) {echo $chk1;} ?>>News
-        <input type="checkbox" name="category[]" value="お客様の髪の未来を守る" <?php if (isset($chk2)) {echo $chk2;} ?>>お客様の髪の未来を守る
-        <input type="checkbox" name="category[]" value="ブログ" <?php if (isset($chk3)) {echo $chk3;} ?>>ブログ
-        <input type="checkbox" name="category[]" value="育毛" <?php if (isset($chk4)) {echo $chk4;} ?>>育毛
+        <input type="checkbox" name="category[]" value="News" <?php if (isset($chk1)) {
+                                                                echo $chk1;
+                                                              } ?>>News
+        <input type="checkbox" name="category[]" value="お客様の髪の未来を守る" <?php if (isset($chk2)) {
+                                                                        echo $chk2;
+                                                                      } ?>>お客様の髪の未来を守る
+        <input type="checkbox" name="category[]" value="ブログ" <?php if (isset($chk3)) {
+                                                                echo $chk3;
+                                                              } ?>>ブログ
+        <input type="checkbox" name="category[]" value="育毛" <?php if (isset($chk4)) {
+                                                              echo $chk4;
+                                                            } ?>>育毛
       </div>
       <h3>画像</h3>
       <div>
@@ -81,7 +106,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       </div>
       <div>
         <h3>投稿日付</h3>
-        <input type="date" name="date">
+        <input type="date" name="date" value="<?php echo h($post['date']); ?>">
       </div>
       <div>
         <h3>タイトル</h3>
@@ -95,7 +120,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     </form>
   </main>
   <footer>
-    <a href="../index.html">メインメニューへ</a>
+    <div style="margin-top: 50px">
+      <a href="../index.html">メインメニューへ</a>
+    </div>
+    <div style="margin: 50px 0">
+      <a href="../../blog/index.php">Blogページへ</a>
+    </div>
   </footer>
 </body>
 
