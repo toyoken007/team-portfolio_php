@@ -5,6 +5,38 @@ $db = dbconnect();
 
 $id = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
 
+
+// if (!$id) {
+//   header('Location: ../news/index.php');
+// }
+
+// $stmt = $db->prepare('select uketuke, hearmenu, nedan, title, imgfile, comment, jouken, stylist, sonota from reserve_cms where id=?');
+// if (!$stmt) {
+//   die($db->error);
+// }
+
+// $stmt->bind_param('i', $id);
+// $succes = $stmt->execute();
+// if (!$succes) {
+//   die($db->error);
+// }
+// $stmt->bind_result($imgfile, $date, $title, $comment);
+// $stmt->fetch();
+
+// $stmt = $db->prepare('select uketuke, hearmenu, nedan, title, imgfile, comment, jouken, stylist, sonota from reserve_cms');
+//         if (!$stmt) {
+//           die($db->error);
+//         }
+//         $succes = $stmt->execute();
+//         if (!$succes) {
+//           die($db->error);
+//         }
+
+//         $stmt->bind_result($uketuke, $hearmenu, $nedan, $title, $imgfile, $comment, $jouken, $stylist, $sonota);
+//         while ($stmt->fetch()) :
+
+//           $hearmenu = unserialize($hearmenu);
+
 ?>
 
 <!DOCTYPE html>
@@ -125,19 +157,41 @@ $id = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
     <section class="shop_list_deta" id="shop_list_deta">
       <ul class="shop_card_list">
         <?php
-        $stmt = $db->prepare('select uketuke, hearmenu, nedan, title, imgfile, comment, jouken, stylist, sonota from reserve_cms');
-        if (!$stmt) {
-          die($db->error);
-        }
-        $succes = $stmt->execute();
-        if (!$succes) {
-          die($db->error);
-        }
-
-        $stmt->bind_result($uketuke, $hearmenu, $nedan, $title, $imgfile, $comment, $jouken, $stylist, $sonota);
-        while ($stmt->fetch()) :
+         $counts = $db->query('select count(*) as cnt from news_cms');
+         $count = $counts->fetch_assoc();
+         $max_page = floor(($count['cnt'] + 1) / 12 + 1);
+ 
+         $stmt = $db->prepare('select id, uketuke, hearmenu, nedan, title, imgfile, comment, jouken, stylist, sonota from reserve_cms order by id desc limit ?, 10');
+         if (!$stmt) {
+           die($db->error);
+         }
+         $page = filter_input(INPUT_GET, 'page', FILTER_SANITIZE_NUMBER_INT);
+         $page = ($page ?: 1);
+         $start = ($page - 1) * 10;
+         $stmt->bind_param('i', $start);
+         $succes = $stmt->execute();
+         if (!$succes) {
+           die($db->error);
+         }
+         $stmt->bind_result($id, $uketuke, $hearmenu, $nedan, $title, $imgfile, $comment, $jouken, $stylist, $sonota);
+         while ($stmt->fetch()) :
 
           $hearmenu = unserialize($hearmenu);
+
+
+        // $stmt = $db->prepare('select uketuke, hearmenu, nedan, title, imgfile, comment, jouken, stylist, sonota from reserve_cms');
+        // if (!$stmt) {
+        //   die($db->error);
+        // }
+        // $succes = $stmt->execute();
+        // if (!$succes) {
+        //   die($db->error);
+        // }
+
+        // $stmt->bind_result($uketuke, $hearmenu, $nedan, $title, $imgfile, $comment, $jouken, $stylist, $sonota);
+        // while ($stmt->fetch()) :
+
+        //   $hearmenu = unserialize($hearmenu);
 
         ?>
           <li class="card_lists">
@@ -175,6 +229,14 @@ $id = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
               </li>
               <li class="reserve">
                 <ul class="reserve_inner">
+                  <div class="edit_wrap">
+                    <div class="edit_box">
+                      <a href="../cms/reserve_update/index.php?id=<?php echo $id; ?>">編集</a>
+                    </div>
+                    <div class="edit_box">
+                      <a href="../cms/reserve_delete/index.php?id=<?php echo $id; ?>">削除</a>
+                    </div>
+                  </div>
                   <li class="inner_coupon_btn"><a href="">このクーポンで<br>空席確認・予約する</a></li>
                   <li class="inner_addition_btn"><a href="">メニューを追加して予約</a></li>
                 </ul>

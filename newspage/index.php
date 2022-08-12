@@ -117,10 +117,10 @@ $stmt->fetch();
         </div>
         <div class="edit_wrap">
           <div class="edit_box">
-            <a href="">編集</a>
+            <a href="../cms/news_update/index.php?id=<?php echo $id; ?>">編集</a>
           </div>
           <div class="edit_box">
-            <a href="">削除</a>
+            <a href="../cms/news_delete/index.php?id=<?php echo $id; ?>">削除</a>
           </div>
         </div>
         <div class="newspage_share">

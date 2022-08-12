@@ -117,14 +117,6 @@ $id = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
               </div>
               <div class="news_title"><a href="../newspage/index.php?id=<?php echo h($id); ?>"><?php echo h($title); ?></a></div>
             </div>
-            <div class="edit_wrap">
-              <div class="edit_box">
-                <a href="">編集</a>
-              </div>
-              <div class="edit_box">
-                <a href="">削除</a>
-              </div>
-            </div>
           </div>
         <?php endwhile; ?>
         <div class="page">
@@ -146,7 +138,7 @@ $id = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
             <h4>Category</h4>
           </div>
           <div class="category_news_box">
-            <div class="category_news"> <a href="">News</a></div>
+            <div class="category_news"> <a href="../news/index.php">News</a></div>
             <div class="category_news"> <a href="">お客様の未来の髪を守る</a></div>
             <div class="category_news"> <a href="../blog/index.php">スタッフブログ</a></div>
             <div class="category_news"> <a href="">育毛</a></div>

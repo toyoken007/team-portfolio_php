@@ -122,10 +122,10 @@ $category = unserialize($category);
         </div>
         <div class="edit_wrap">
           <div class="edit_box">
-            <a href="">編集</a>
+            <a href="../cms/blog_update/index.php?id=<?php echo $id; ?>">編集</a>
           </div>
           <div class="edit_box">
-            <a href="">削除</a>
+            <a href="../cms/blog_delete/index.php?id=<?php echo $id; ?>">削除</a>
           </div>
         </div>
         <div class="newspage_share">
@@ -149,7 +149,7 @@ $category = unserialize($category);
             <h4>Category</h4>
           </div>
           <div class="category_news_box">
-            <div class="category_news"> <a href="">News</a></div>
+            <div class="category_news"> <a href="../news/index.php">News</a></div>
             <div class="category_news"> <a href="">お客様の未来の髪を守る</a></div>
             <div class="category_news"> <a href="../blog/index.php">スタッフブログ</a></div>
             <div class="category_news"> <a href="">育毛</a></div>
