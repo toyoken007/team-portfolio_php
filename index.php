@@ -175,6 +175,8 @@ $stmt->fetch();
         <div class="blog_list">
           <?php 
           $db = dbconnect();
+          $id = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
+
           $stmt = $db->prepare('select imgfile, date, title from blog_cms order by id desc limit 0, 4');
           if (!$stmt) {
             die($db->error);
@@ -189,33 +191,12 @@ $stmt->fetch();
           
           ?>
           <div class="blog_box">
-            <div class="blog_box1"><img src="./images/cms/<?php echo h($imgfile); ?>" alt="育毛剤の画像"></div>
+            <div class="blog_box1"><img src="./images/cms/<?php echo h($imgfile); ?>" alt=""></div>
             <div class="blog_box2">
-              <p class="blog_days"><?php echo h($date); ?></p><a href=""><?php echo h($title); ?></a>
+              <p class="blog_days"><?php echo h($date); ?></p><?php echo h($title); ?>
             </div>
           </div>
           <?php endwhile; ?>
-          <!-- <div class="blog_box">
-            <div class="blog_box1"><img src="./images/top/tatemono.jpg" alt="建物の画像"></div>
-            <div class="blog_box2">
-              <p class="blog_days">2020.05.07</p>
-              <p><a href="">本日より営業再開しました。</a></p>
-            </div>
-          </div>
-          <div class="blog_box">
-            <div class="blog_box1"><img src="./images/top/kaikei.jpg" alt="会計の画像"></div>
-            <div class="blog_box2">
-              <p class="blog_days">2020.05.06</p>
-              <p><a href="">安心安全お会計</a></p>
-            </div>
-          </div>
-          <div class="blog_box">
-            <div class="blog_box1"><img src="./images/top/hatake.jpg" alt="畑の画像"></div>
-            <div class="blog_box2">
-              <p class="blog_days">2020.05.05</p>
-              <p><a href="">畑ほぼ完成しました。</a></p>
-            </div> -->
-          <!-- </div> -->
         </div>
         <div class="blog_link">
           <p><a href="blog/index.php">View more</a></p>
@@ -227,9 +208,9 @@ $stmt->fetch();
         <div class="contact_box">
           <p>Demosite Hair TOYO </p>
           <div class="list_box">
-            <div class="list"><a href="">Concept</a><a href="">Menu</a><a href="">About</a></div>
-            <div class="list"><a href="">Recruit</a><a href="">Contact</a><a href="">Privacy policy</a></div>
-            <div class="list"><a href="">News</a><a href="">Gallery</a><a href="">Blog </a></div>
+            <div class="list"><a href="concept/index.html">Concept</a><a href="menu/index.html">Menu</a><a href="about/index.html">About</a></div>
+            <div class="list"><a href="recruit/index.html">Recruit</a><a href="contact/index.html">Contact</a><a href="">Privacy policy</a></div>
+            <div class="list"><a href="news/index.php">News</a><a href="gallery/index.html">Gallery</a><a href="blog/index.php">Blog </a></div>
           </div>
           <div class="copyright"> 
             <p>&copy; 2022 Demosite Hair TOYO</p>

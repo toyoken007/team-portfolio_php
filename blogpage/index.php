@@ -95,7 +95,7 @@ $category = unserialize($category);
       <div class="newspage_h1">
         <h1>Blog</h1>
       </div>
-      <div class="newspage_image"> <img src="https://placehold.jp/964x369.png" alt="ギャラリーのイメージ画像"></div>
+      <div class="newspage_image"> <img src="../images/news_blog/biyousitu.jpg" alt=""></div>
     </div>
     <div class="newspage_wrapwrap">
       <div class="newspage_main">
@@ -137,11 +137,11 @@ $category = unserialize($category);
             <div class="sns"> <img src="https://placehold.jp/35x35.png" alt="facebookロゴ"></div>
           </div>
         </div>
-        <div class="newspage_link">
+        <!-- <div class="newspage_link">
           <div class="link_backpage"> <a href="">サロンリフレッシュ</a></div>
           <div class="link_back"><a href="">Back</a></div>
           <div class="link_nextpage"><a href="">次へ</a></div>
-        </div>
+        </div> -->
       </div>
       <div class="news_guidance">
         <div class="category_box">
@@ -231,9 +231,9 @@ $category = unserialize($category);
       <div class="contact_box">
         <p>Demosite Hair TOYO </p>
         <div class="list_box">
-          <div class="list"><a href="">Concept</a><a href="">Menu</a><a href="">About</a></div>
-          <div class="list"><a href="">Recruit</a><a href="">Contact</a><a href="">Privacy policy</a></div>
-          <div class="list"><a href="">News</a><a href="">Gallery</a><a href="">Blog </a></div>
+          <div class="list"><a href="../concept/index.html">Concept</a><a href="../menu/index.html">Menu</a><a href="../about/index.html">About</a></div>
+          <div class="list"><a href="../recruit/index.html">Recruit</a><a href="../contact/index.html">Contact</a><a href="">Privacy policy</a></div>
+          <div class="list"><a href="../news/index.php">News</a><a href="../gallery/index.html">Gallery</a><a href="../blog/index.php">Blog </a></div>
         </div>
         <div class="copyright">
           <p>&copy; 2022 Demosite Hair TOYO</p>

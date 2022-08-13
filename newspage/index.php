@@ -94,7 +94,7 @@ $stmt->fetch();
       <div class="newspage_h1">
         <h1>News</h1>
       </div>
-      <div class="newspage_image"> <img src="https://placehold.jp/964x369.png" alt="ギャラリーのイメージ画像"></div>
+      <div class="newspage_image"> <img src="../images/news_blog/biyousitu.jpg" alt=""></div>
     </div>
     <div class="newspage_wrapwrap">
       <div class="newspage_main">
@@ -220,9 +220,9 @@ $stmt->fetch();
       <div class="contact_box">
         <p>Demosite Hair TOYO </p>
         <div class="list_box">
-          <div class="list"><a href="">Concept</a><a href="">Menu</a><a href="">About</a></div>
-          <div class="list"><a href="">Recruit</a><a href="">Contact</a><a href="">Privacy policy</a></div>
-          <div class="list"><a href="">News</a><a href="">Gallery</a><a href="">Blog </a></div>
+          <div class="list"><a href="../concept/index.html">Concept</a><a href="../menu/index.html">Menu</a><a href="../about/index.html">About</a></div>
+          <div class="list"><a href="../recruit/index.html">Recruit</a><a href="../contact/index.html">Contact</a><a href="">Privacy policy</a></div>
+          <div class="list"><a href="../news/index.php">News</a><a href="../gallery/index.html">Gallery</a><a href="../blog/index.php">Blog </a></div>
         </div>
         <div class="copyright">
           <p>&copy; 2022 Demosite Hair TOYO</p>

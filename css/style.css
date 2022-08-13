@@ -75,6 +75,7 @@ textarea {
 
 a {
   text-decoration: none;
+  display: block;
 }
 
 /* Breakpoints
@@ -875,6 +876,11 @@ a {
   right: 0;
 }
 
+.about_page {
+  width: 100%;
+  max-width: 1300px;
+  margin: 0 auto;
+}
 .about_page .about_wrap {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -993,7 +999,7 @@ a {
 .about_page .stylist_philosophy {
   background-color: #ebebeb;
   width: 90%;
-  margin: 100px 0 0 auto;
+  margin: 0 auto;
   height: 500px;
 }
 
@@ -1144,7 +1150,11 @@ a {
 .about_page .stylist_outline .outline_box .company .company_list td {
   text-align: left;
 }
-
+.gallery_page {
+  width: 100%;
+  max-width: 1300px;
+  margin: 0 auto;
+}
 .gallery_page .gallery_wrap {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -1211,6 +1221,8 @@ a {
   display: -ms-flexbox;
   display: flex;
   width: 100%;
+  max-width: 1300px;
+  margin: 0 auto;
 }
 
 .recruit_page .recruit_wrap .recruit_h1 {
@@ -1744,6 +1756,11 @@ a {
   padding: 5px 0;
 }
 
+.concept_page {
+  width: 100%;
+  max-width: 1300px;
+  margin: 0 auto;
+}
 .concept_page .concept_wrap {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -1852,9 +1869,10 @@ a {
   flex-wrap: wrap;
   -webkit-box-pack: justify;
   -ms-flex-pack: justify;
-  justify-content: space-between;
+  justify-content: center;
   margin: 0 auto;
-  width: 67%;
+  width: 1000px;
+  column-gap: 30px;
 }
 
 .concept_page .concept_features .features_box .features_wrap .features_icon1 {
@@ -1884,6 +1902,12 @@ a {
 
 .concept_page .concept_features .features_box .features_wrap .features_icon1 .hone .features_comment p {
   font-size: 15px;
+}
+
+.menu_page {
+  width: 100%;
+  max-width: 1300px;
+  margin: 0 auto;
 }
 
 .menu_page .menu_wrap {
@@ -1982,6 +2006,12 @@ a {
   /*線の色*/
   border-radius: 2px;
   /*線の丸み*/
+}
+
+.news_page {
+  width: 100%;
+  max-width: 1300px;
+  margin: 0 auto;
 }
 
 .news_page .news_wrap {
@@ -2264,7 +2294,11 @@ a {
   font-size: 12px;
 }
 
-
+.newspage_page {
+  max-width: 1300px;
+  width: 100%;
+  margin: 0 auto;
+}
 
 .newspage_page .newspage_wrap {
   display: -webkit-box;
@@ -2624,6 +2658,11 @@ a {
   font-size: 12px;
 }
 
+.contact_page {
+  max-width: 1300px;
+  width: 100%;
+  margin: 0 auto;
+}
 .contact_page .contact_wrap {
   display: -webkit-box;
   display: -ms-flexbox;

@@ -157,41 +157,41 @@ $id = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
     <section class="shop_list_deta" id="shop_list_deta">
       <ul class="shop_card_list">
         <?php
-         $counts = $db->query('select count(*) as cnt from news_cms');
-         $count = $counts->fetch_assoc();
-         $max_page = floor(($count['cnt'] + 1) / 12 + 1);
- 
-         $stmt = $db->prepare('select id, uketuke, hearmenu, nedan, title, imgfile, comment, jouken, stylist, sonota from reserve_cms order by id desc limit ?, 10');
-         if (!$stmt) {
-           die($db->error);
-         }
-         $page = filter_input(INPUT_GET, 'page', FILTER_SANITIZE_NUMBER_INT);
-         $page = ($page ?: 1);
-         $start = ($page - 1) * 10;
-         $stmt->bind_param('i', $start);
-         $succes = $stmt->execute();
-         if (!$succes) {
-           die($db->error);
-         }
-         $stmt->bind_result($id, $uketuke, $hearmenu, $nedan, $title, $imgfile, $comment, $jouken, $stylist, $sonota);
-         while ($stmt->fetch()) :
+        $counts = $db->query('select count(*) as cnt from news_cms');
+        $count = $counts->fetch_assoc();
+        $max_page = floor(($count['cnt'] + 1) / 12 + 1);
+
+        $stmt = $db->prepare('select id, uketuke, hearmenu, nedan, title, imgfile, comment, jouken, stylist, sonota from reserve_cms order by id desc limit ?, 10');
+        if (!$stmt) {
+          die($db->error);
+        }
+        $page = filter_input(INPUT_GET, 'page', FILTER_SANITIZE_NUMBER_INT);
+        $page = ($page ?: 1);
+        $start = ($page - 1) * 10;
+        $stmt->bind_param('i', $start);
+        $succes = $stmt->execute();
+        if (!$succes) {
+          die($db->error);
+        }
+        $stmt->bind_result($id, $uketuke, $hearmenu, $nedan, $title, $imgfile, $comment, $jouken, $stylist, $sonota);
+        while ($stmt->fetch()) :
 
           $hearmenu = unserialize($hearmenu);
 
 
-        // $stmt = $db->prepare('select uketuke, hearmenu, nedan, title, imgfile, comment, jouken, stylist, sonota from reserve_cms');
-        // if (!$stmt) {
-        //   die($db->error);
-        // }
-        // $succes = $stmt->execute();
-        // if (!$succes) {
-        //   die($db->error);
-        // }
+          // $stmt = $db->prepare('select uketuke, hearmenu, nedan, title, imgfile, comment, jouken, stylist, sonota from reserve_cms');
+          // if (!$stmt) {
+          //   die($db->error);
+          // }
+          // $succes = $stmt->execute();
+          // if (!$succes) {
+          //   die($db->error);
+          // }
 
-        // $stmt->bind_result($uketuke, $hearmenu, $nedan, $title, $imgfile, $comment, $jouken, $stylist, $sonota);
-        // while ($stmt->fetch()) :
+          // $stmt->bind_result($uketuke, $hearmenu, $nedan, $title, $imgfile, $comment, $jouken, $stylist, $sonota);
+          // while ($stmt->fetch()) :
 
-        //   $hearmenu = unserialize($hearmenu);
+          //   $hearmenu = unserialize($hearmenu);
 
         ?>
           <li class="card_lists">
@@ -252,9 +252,9 @@ $id = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
       <div class="contact_box">
         <p>Demosite Hair TOYO </p>
         <div class="list_box">
-          <div class="list"><a href="">Concept</a><a href="">Menu</a><a href="">About</a></div>
-          <div class="list"><a href="">Recruit</a><a href="">Contact</a><a href="">Privacy policy</a></div>
-          <div class="list"><a href="">News</a><a href="">Gallery</a><a href="">Blog </a></div>
+          <div class="list"><a href="../concept/index.html">Concept</a><a href="../menu/index.html">Menu</a><a href="../about/index.html">About</a></div>
+          <div class="list"><a href="../recruit/index.html">Recruit</a><a href="../contact/index.html">Contact</a><a href="">Privacy policy</a></div>
+          <div class="list"><a href="../news/index.php">News</a><a href="../gallery/index.html">Gallery</a><a href="../blog/index.php">Blog </a></div>
         </div>
         <div class="copyright">
           <p>&copy; 2022 Demosite Hair TOYO</p>
