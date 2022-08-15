@@ -117,7 +117,7 @@ $category = unserialize($category);
         </div>
         <div class="newspage_img">
           <?php if (isset($imgfile)) : ?>
-            <img src="../images/cms/<?php echo h($imgfile); ?>" alt="">
+            <img src="../cms/cms_picture/<?php echo h($imgfile); ?>" alt="">
           <?php endif; ?>
         </div>
         <div class="edit_wrap">
@@ -203,7 +203,7 @@ $category = unserialize($category);
           ?>
             <div class="recent_post_box">
               <div class="recent_post_img_box">
-                <div class="recent_post_img"><img src="../images/cms/<?php echo h($imgfile); ?>" alt=""></div>
+                <div class="recent_post_img"><img src="../cms/cms_picture/<?php echo h($imgfile); ?>" alt=""></div>
               </div>
               <div class="recent_post_box_wrap">
                 <div class="logo_box">

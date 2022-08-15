@@ -1,11 +1,11 @@
 <?php
 session_start();
 
-require('library/library.php');
+require('../../library/library.php');
 
 $id = $_SESSION['id'];
 $category = $_SESSION['category'];
-$imgfile = $_SESSION['imgfile'];
+$imgfile = $_SESSION['form']['imgfile'];
 $date = $_SESSION['date'];
 $title = $_SESSION['title'];
 $comment = $_SESSION['comment'];

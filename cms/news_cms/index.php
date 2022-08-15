@@ -1,6 +1,6 @@
 <?php
 session_start();
-require('library/library.php');
+require('../../library/library.php');
 
 $post = [
   'imgfile' => '',
@@ -33,8 +33,27 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $error['comment'] = 'blank';
   }
 
+  $imgfile = $_FILES['imgfile'];
+  if ($imgfile['name'] !== '' && $imgfile['error'] === 0) {
+    $type = mime_content_type($imgfile['tmp_name']);
+    if ($type !== 'image/png' && $type !== 'image/jpeg') {
+      $error['image'] = 'type';
+    }
+  }
+
+
   if (count($error) === 0) {
     $_SESSION['form'] = $post;
+
+    if ($imgfile !== '') {
+      $filename = date('YmdHis') . '_' . $imgfile['name'];
+      if (!move_uploaded_file($imgfile['tmp_name'], '../cms_picture/' . $filename)) {
+        die('ファイルのアップロードに失敗しました');
+      }
+      $_SESSION['form']['imgfile'] = $filename;
+    } else {
+      $_SESSION['form']['imgfile'] = '';
+    }
     header('Location: kanri_check.php');
     exit();
   }
@@ -59,12 +78,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <h1>管理画面</h1>
   </header>
   <main>
-    <form action="" method="POST">
-      <h3>画像</h3>
-      <div>
-        <h3>画像ファイル名</h3>
-        <input type="text" name="imgfile" value="<?php echo h($post['imgfile']); ?>">
-      </div>
+    <form action="" method="POST" enctype="multipart/form-data">
       <div>
         <h3>投稿日付</h3>
         <input type="date" name="date">
@@ -77,6 +91,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <h3>コメント</h3>
         <textarea name="comment" id="" cols="70" rows="10"><?php echo h($post['comment']); ?></textarea>
       </div>
+      <h3>画像</h3>
+      <div>
+        <h3>画像ファイル名</h3>
+        <input type="file" name="imgfile" value="<?php echo h($post['imgfile']); ?>">
+      </div>
+      <br>
       <input type="submit" value="送信">
     </form>
   </main>

@@ -6,36 +6,6 @@ $db = dbconnect();
 $id = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
 
 
-// if (!$id) {
-//   header('Location: ../news/index.php');
-// }
-
-// $stmt = $db->prepare('select uketuke, hearmenu, nedan, title, imgfile, comment, jouken, stylist, sonota from reserve_cms where id=?');
-// if (!$stmt) {
-//   die($db->error);
-// }
-
-// $stmt->bind_param('i', $id);
-// $succes = $stmt->execute();
-// if (!$succes) {
-//   die($db->error);
-// }
-// $stmt->bind_result($imgfile, $date, $title, $comment);
-// $stmt->fetch();
-
-// $stmt = $db->prepare('select uketuke, hearmenu, nedan, title, imgfile, comment, jouken, stylist, sonota from reserve_cms');
-//         if (!$stmt) {
-//           die($db->error);
-//         }
-//         $succes = $stmt->execute();
-//         if (!$succes) {
-//           die($db->error);
-//         }
-
-//         $stmt->bind_result($uketuke, $hearmenu, $nedan, $title, $imgfile, $comment, $jouken, $stylist, $sonota);
-//         while ($stmt->fetch()) :
-
-//           $hearmenu = unserialize($hearmenu);
 
 ?>
 
@@ -179,19 +149,6 @@ $id = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
           $hearmenu = unserialize($hearmenu);
 
 
-          // $stmt = $db->prepare('select uketuke, hearmenu, nedan, title, imgfile, comment, jouken, stylist, sonota from reserve_cms');
-          // if (!$stmt) {
-          //   die($db->error);
-          // }
-          // $succes = $stmt->execute();
-          // if (!$succes) {
-          //   die($db->error);
-          // }
-
-          // $stmt->bind_result($uketuke, $hearmenu, $nedan, $title, $imgfile, $comment, $jouken, $stylist, $sonota);
-          // while ($stmt->fetch()) :
-
-          //   $hearmenu = unserialize($hearmenu);
 
         ?>
           <li class="card_lists">
@@ -214,7 +171,7 @@ $id = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
                   </li>
                   <li class="section_detail">
                     <ul class="detail_datas">
-                      <li class="data_image"><img src="../images/concept/<?php echo h($imgfile); ?>" alt=""></li>
+                      <li class="data_image"><img src="../cms/cms_picture/<?php echo h($imgfile); ?>" alt=""></li>
                       <li class="data_txt">
                         <p class="txt_cap"><?php echo h($comment); ?></p>
                         <div class="txt_conditions">

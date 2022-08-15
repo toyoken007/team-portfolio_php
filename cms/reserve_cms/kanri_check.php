@@ -1,6 +1,6 @@
 <?php
 session_start();
-require('library/library.php');
+require('../../library/library.php');
 
 
 // 入力画面からのアクセスでなければ、戻す
@@ -95,7 +95,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
               </td>
             </tr>
             <tr>
-              <th>
+              <th class="cms_img">
                 <p>画像ファイル名 : </p>
               </th>
               <td>

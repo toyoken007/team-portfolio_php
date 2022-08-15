@@ -1,5 +1,6 @@
 <?php
-require('library/library.php');
+session_start();
+require('../../library/library.php');
 
 $db = dbconnect();
 $stmt = $db->prepare('select * from news_cms where id=?');
@@ -16,6 +17,62 @@ if (!$result) {
   die('Newsの指定が正しくありません');
 }
 
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+
+  // $imgfile = filter_input(INPUT_POST, 'imgfile', FILTER_SANITIZE_STRING);
+  // // if ($post['imgfile'] === '') {
+  // //   $error['imgfile'] = 'blank';
+  // // }
+
+  // $date = filter_input(INPUT_POST, 'date', FILTER_SANITIZE_STRING);
+  // // if ($post['date'] === '') {
+  // //   $error['date'] = 'blank';
+  // // }
+
+  // $title = filter_input(INPUT_POST, 'title', FILTER_SANITIZE_STRING);
+  // // if ($post['title'] === '') {
+  // //   $error['title'] = 'blank';
+  // // }
+
+  // $comment = filter_input(INPUT_POST, 'comment', FILTER_SANITIZE_STRING);
+  // if ($post['comment'] === '') {
+  //   $error['comment'] = 'blank';
+  // }
+
+  $imgfile = $_FILES['imgfile'];
+  if ($imgfile['name'] !== '' && $imgfile['error'] === 0) {
+    $type = mime_content_type($imgfile['tmp_name']);
+    if ($type !== 'image/png' && $type !== 'image/jpeg') {
+      $error['image'] = 'type';
+    }
+  }
+
+
+  $_SESSION['date'] = $_POST['date'];
+  $_SESSION['title'] = $_POST['title'];
+  $_SESSION['comment'] = $_POST['comment'];
+  $_SESSION['id'] = $_POST['id'];
+
+
+  if ($imgfile !== '') {
+    $filename = date('YmdHis') . '_' . $imgfile['name'];
+    if (!move_uploaded_file($imgfile['tmp_name'], '../cms_picture/' . $filename)) {
+      die('ファイルのアップロードに失敗しました');
+    }
+    $_SESSION['form']['imgfile'] = $filename;
+  } else {
+    $_SESSION['form']['imgfile'] = '';
+  }
+
+
+  // var_dump($comment);
+  // var_dump($_SESSION['form']['imgfile']);
+  // $_SESSION['form'] = $post;
+  header('Location: update_do.php');
+  // exit();
+  // unset($comment);
+
+}
 ?>
 <!DOCTYPE html>
 <html lang="ja">
@@ -32,12 +89,13 @@ if (!$result) {
     <h1>編集画面</h1>
   </header>
   <main>
-    <form action="update_do.php" method="POST">
+    <form action="" method="POST" enctype="multipart/form-data">
       <input type="hidden" name="id" value="<?php echo $id; ?>">
       <h3>画像</h3>
       <div>
         <h3>画像ファイル名</h3>
-        <input type="text" name="imgfile" value="<?php echo h($imgfile); ?>">
+        <input type="file" name="imgfile" value="<?php echo h($imgfile); ?>">
+        <p style="margin: 0; color: red;">※恐れ入りますが改めて画像の指定してください。</p>
       </div>
       <div>
         <h3>投稿日付</h3>

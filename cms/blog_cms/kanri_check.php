@@ -1,6 +1,6 @@
 <?php
 session_start();
-require('library/library.php');
+require('../../library/library.php');
 
 // 入力画面からのアクセスでなければ、戻す
 if (!isset($_SESSION['form']) && !isset($_SESSION['category'])) {
@@ -42,6 +42,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>管理確認画面</title>
+  <link rel="stylesheet" href="../../css/style.css">
 </head>
 
 <body>
@@ -71,14 +72,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             </tr>
             <tr>
               <th>
-                <p>画像ファイル名 : </p>
-              </th>
-              <td>
-                <?php echo h($post['imgfile']); ?>
-              </td>
-            </tr>
-            <tr>
-              <th>
                 <p>投稿日付 : </p>
               </th>
               <td>
@@ -99,6 +92,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <td>
               <?php echo h($post['comment']); ?>
             </td>
+            </tr>
+            <tr>
+              <th>
+                <p>画像ファイル名 : </p>
+              </th>
+              <td class="cms_img">
+                <img src="../cms_picture/<?php echo h($post['imgfile']); ?>" alt=""> 
+              </td>
             </tr>
           </table>
           <div class="botan">

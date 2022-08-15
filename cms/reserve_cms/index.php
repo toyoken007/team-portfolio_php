@@ -1,6 +1,6 @@
 <?php
 session_start();
-require('library/library.php');
+require('../../library/library.php');
 
 
 $post = [
@@ -65,9 +65,28 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $error['sonota'] = 'blank';
   }
 
+  $imgfile = $_FILES['imgfile'];
+  if ($imgfile['name'] !== '' && $imgfile['error'] === 0) {
+    $type = mime_content_type($imgfile['tmp_name']);
+    if ($type !== 'image/png' && $type !== 'image/jpeg') {
+      $error['image'] = 'type';
+    }
+  }
+
   if (count($error) === 0) {
     $_SESSION['hearmenu'] = $_POST['hearmenu'];
     $_SESSION['form'] = $post;
+
+    if ($imgfile !== '') {
+      $filename = date('YmdHis') . '_' . $imgfile['name'];
+      if (!move_uploaded_file($imgfile['tmp_name'], '../cms_picture/' . $filename)) {
+        die('ファイルのアップロードに失敗しました');
+      }
+      $_SESSION['form']['imgfile'] = $filename;
+    } else {
+      $_SESSION['form']['imgfile'] = '';
+    }
+
     header('Location: kanri_check.php');
     exit();
   }
@@ -118,7 +137,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   </header>
   <main>
     <h3>クーポン</h3>
-    <form action="" method="POST">
+    <form action="" method="POST" enctype="multipart/form-data">
       <div>
         <h3>新規・再来・全員</h3>
         <input type="radio" name="uketuke" value="新規" <?php if ($post['uketuke'] == "新規") echo 'checked' ?>>新規
@@ -155,7 +174,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       </div>
       <div>
         <h3>画像ファイル名</h3>
-        <input type="text" name="imgfile" value="<?php echo h($post['imgfile']); ?>">
+        <input type="file" name="imgfile">
       </div>
       <div>
         <h3>コメント</h3>
@@ -177,7 +196,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     </form>
   </main>
   <footer>
-    <a href="../index.html">メインメニューへ</a>
+    <div style="margin-top: 50px">
+      <a href="../index.html">メインメニューへ</a>
+    </div>
+    <div style="margin: 50px 0">
+      <a href="../../reserve/index.php">Reserveページへ</a>
+    </div>
   </footer>
 </body>
 

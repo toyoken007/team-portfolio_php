@@ -106,7 +106,7 @@ $id = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
         ?>
           <div class="news_box">
             <div class="news_img_box">
-              <div class="news_img"><img src="../images/cms/<?php echo h($imgfile); ?>" alt=""></div>
+              <div class="news_img"><a href="../newspage/index.php?id=<?php echo h($id); ?>"><img src="../cms/cms_picture/<?php echo h($imgfile); ?>" alt=""></a></div>
             </div>
             <div class="news_box_wrap">
               <div class="news_logo">
@@ -189,7 +189,7 @@ $id = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
           while ($stmt->fetch()) : ?>
             <div class="recent_post_box">
               <div class="recent_post_img_box">
-                <div class="recent_post_img"><img src="../images/cms/<?php echo h($imgfile); ?>" alt=""></div>
+                <div class="recent_post_img"><img src="../cms/cms_picture/<?php echo h($imgfile); ?>" alt=""></div>
               </div>
               <div class="recent_post_box_wrap">
                 <div class="recent_post_logo">

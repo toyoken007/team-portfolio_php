@@ -1,5 +1,5 @@
 <?php 
-require('library/library.php');
+require('../../library/library.php');
 
 $db = dbconnect();
 $stmt = $db->prepare('delete from blog_cms where id=?');

@@ -1,6 +1,7 @@
 <?php
 session_start();
-require('library/library.php');
+require('../../library/library.php');
+
 
 $db = dbconnect();
 $stmt = $db->prepare('select * from reserve_cms where id=?');
@@ -14,53 +15,66 @@ $stmt->execute();
 $stmt->bind_result($id, $uketuke, $hearmenu, $nedan, $title, $imgfile, $comment, $jouken, $stylist, $sonota);
 $result = $stmt->fetch();
 if (!$result) {
-  die('reserveの指定が正しくありません');
+  die('Reserveの指定が正しくありません');
 }
 
-// var_dump($id);
 $hearmenu = unserialize($hearmenu);
 
-// if (is_array($category)) {
-
-  foreach ($hearmenu as $key => $value) {
-    if ($value == 'カット') {
-      $chk1 = 'checked';
-    }
-    if ($value == 'カラー') {
-      $chk2 = 'checked';
-    }
-    if ($value == 'トリートメント') {
-      $chk3 = 'checked';
-    }
-    if ($value == 'ヘッドスパ') {
-      $chk4 = 'checked';
-    }
-    if ($value == 'その他') {
-      $chk5 = 'checked';
-    }
-    if ($value == 'メニューを選択してご利用いただくクーポンです') {
-      $chk6 = 'checked';
-    }
+foreach ($hearmenu as $key => $value) {
+  if ($value == 'カット') {
+    $chk1 = 'checked';
   }
-// }
+  if ($value == 'カラー') {
+    $chk2 = 'checked';
+  }
+  if ($value == 'トリートメント') {
+    $chk3 = 'checked';
+  }
+  if ($value == 'ヘッドスパ') {
+    $chk4 = 'checked';
+  }
+  if ($value == 'その他') {
+    $chk5 = 'checked';
+  }
+  if ($value == 'メニューを選択してご利用いただくクーポンです') {
+    $chk6 = 'checked';
+  }
+}
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
+  $imgfile = $_FILES['imgfile'];
+  if ($imgfile['name'] !== '' && $imgfile['error'] === 0) {
+    $type = mime_content_type($imgfile['tmp_name']);
+    if ($type !== 'image/png' && $type !== 'image/jpeg') {
+      $error['image'] = 'type';
+    }
+  }
+
+
+  if ($imgfile !== '') {
+    $filename = date('YmdHis') . '_' . $imgfile['name'];
+    if (!move_uploaded_file($imgfile['tmp_name'], '../cms_picture/' . $filename)) {
+      die('ファイルのアップロードに失敗しました');
+    }
+    $_SESSION['form']['imgfile'] = $filename;
+  } else {
+    $_SESSION['form']['imgfile'] = '';
+  }
+
+  $_SESSION['id'] = $_POST['id'];
   $_SESSION['uketuke'] = $_POST['uketuke'];
   $_SESSION['hearmenu'] = $_POST['hearmenu'];
   $_SESSION['nedan'] = $_POST['nedan'];
   $_SESSION['title'] = $_POST['title'];
-  $_SESSION['imgfile'] = $_POST['imgfile'];
   $_SESSION['comment'] = $_POST['comment'];
   $_SESSION['jouken'] = $_POST['jouken'];
   $_SESSION['stylist'] = $_POST['stylist'];
   $_SESSION['sonota'] = $_POST['sonota'];
-  $_SESSION['id'] = $_POST['id'];
   
-  header('Location: update_do.php');
-  
+  header('Location:update_do.php');
+  exit();
 }
-
 ?>
 <!DOCTYPE html>
 <html lang="ja">
@@ -78,8 +92,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   </header>
   <main>
     <h3>クーポン</h3>
-    <form action="" method="POST">
-    <input type="hidden" name="id" value="<?php echo $id; ?>">
+    <form action="" method="POST" enctype="multipart/form-data">
+      <input type="hidden" name="id" value="<?php echo $id; ?>">
       <div>
         <h3>新規・再来・全員</h3>
         <input type="radio" name="uketuke" value="新規" <?php if ($uketuke == "新規") echo 'checked' ?>>新規
@@ -116,7 +130,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       </div>
       <div>
         <h3>画像ファイル名</h3>
-        <input type="text" name="imgfile" value="<?php echo h($imgfile); ?>">
+        <input type="file" name="imgfile">
+        <p style="margin: 0; color: red;">※恐れ入りますが改めて画像の指定してください。</p>
       </div>
       <div>
         <h3>コメント</h3>
@@ -138,12 +153,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     </form>
   </main>
   <footer>
-    <div style="margin-top: 50px">
-      <a href="../index.html">メインメニューへ</a>
-    </div>
-    <div style="margin: 50px 0">
-      <a href="../../news/index.php">Newsページへ</a>
-    </div>
+    <a href="../index.html">メインメニューへ</a>
   </footer>
 </body>
 

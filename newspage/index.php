@@ -112,7 +112,7 @@ $stmt->fetch();
         </div>
         <div class="newspage_img">
           <?php if (isset($imgfile)) : ?>
-            <img src="../images/cms/<?php echo h($imgfile); ?>" alt="">
+            <img src="../cms/cms_picture/<?php echo h($imgfile); ?>" alt="">
           <?php endif; ?>
         </div>
         <div class="edit_wrap">
@@ -132,11 +132,11 @@ $stmt->fetch();
             <div class="sns"> <img src="https://placehold.jp/35x35.png" alt="facebookロゴ"></div>
           </div>
         </div>
-        <div class="newspage_link">
+        <!-- <div class="newspage_link">
           <div class="link_backpage"> <a href="">サロンリフレッシュ</a></div>
           <div class="link_back"><a href="">Back</a></div>
           <div class="link_nextpage"><a href="">次へ</a></div>
-        </div>
+        </div> -->
       </div>
       <div class="news_guidance">
         <div class="category_box">
@@ -196,7 +196,7 @@ $stmt->fetch();
           ?>
             <div class="recent_post_box">
               <div class="recent_post_img_box">
-                <div class="recent_post_img"><img src="../images/cms/<?php echo h($imgfile); ?>" alt=""></div>
+                <div class="recent_post_img"><img src="../cms/cms_picture/<?php echo h($imgfile); ?>" alt=""></div>
               </div>
               <div class="recent_post_box_wrap">
                 <div class="recent_post_logo">

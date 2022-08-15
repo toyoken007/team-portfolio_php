@@ -191,7 +191,7 @@ $stmt->fetch();
           
           ?>
           <div class="blog_box">
-            <div class="blog_box1"><img src="./images/cms/<?php echo h($imgfile); ?>" alt=""></div>
+            <div class="blog_box1"><img src="cms/cms_picture/<?php echo h($imgfile); ?>" alt=""></div>
             <div class="blog_box2">
               <p class="blog_days"><?php echo h($date); ?></p><?php echo h($title); ?>
             </div>

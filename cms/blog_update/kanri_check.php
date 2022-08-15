@@ -1,6 +1,6 @@
 <?php
 session_start();
-require('library/library.php');
+require('../../library/library.php');
 var_dump($_SESSION);
 // 入力画面からのアクセスでなければ、戻す
 if (!isset($_SESSION['form']) && !isset($_SESSION['category'])) {

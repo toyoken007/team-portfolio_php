@@ -1,6 +1,6 @@
 <?php
 session_start();
-require('library/library.php');
+require('../../library/library.php');
 
 // 入力画面からのアクセスでなければ、戻す
 if (!isset($_SESSION['form'])) {
@@ -55,15 +55,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
           <input type="hidden" name="action" value="submit">
           <table>
             <tr>
-            <th>
-                <p>画像ファイル名 : </p>
-              </th>
-              <td>
-                <?php echo h($post['imgfile']); ?>
-              </td>
-            </tr>
-            <tr>
-            <th>
+              <th>
                 <p>投稿日付 : </p>
               </th>
               <td>
@@ -71,7 +63,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
               </td>
             </tr>
             <tr>
-            <th>
+              <th>
                 <p>タイトル : </p>
               </th>
               <td>
@@ -79,10 +71,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
               </td>
             </tr>
             <th>
-                <p>タイトル : </p>
+              <p>タイトル : </p>
+            </th>
+            <td>
+              <?php echo h($post['comment']); ?>
+            </td>
+            </tr>
+            <tr>
+              <th>
+                <p>画像ファイル名 : </p>
               </th>
-              <td>
-                <?php echo h($post['comment']); ?>
+              <td class="cms_img">
+                <?php echo h($post['imgfile']); ?>
               </td>
             </tr>
           </table>

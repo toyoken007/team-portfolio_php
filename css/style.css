@@ -2734,6 +2734,10 @@ a {
   text-align: center;
 }
 
+.form_kakunin .cms_img {
+  width: 200px;
+}
+
 footer {
   margin-top: 200px;
   display: -webkit-box;
