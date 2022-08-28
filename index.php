@@ -177,7 +177,7 @@ $stmt->fetch();
           $db = dbconnect();
           $id = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
 
-          $stmt = $db->prepare('select imgfile, date, title from blog_cms order by id desc limit 0, 4');
+          $stmt = $db->prepare('select id, imgfile, date, title from blog_cms order by id desc limit 0, 4');
           if (!$stmt) {
             die($db->error);
           }
@@ -185,15 +185,16 @@ $stmt->fetch();
           if (!$succes) {
             die($db->error);
           }
-          $stmt->bind_result($imgfile, $date, $title);
+          $stmt->bind_result($id, $imgfile, $date, $title);
 
           while ($stmt->fetch()):
           
           ?>
           <div class="blog_box">
-            <div class="blog_box1"><img src="cms/cms_picture/<?php echo h($imgfile); ?>" alt=""></div>
+            <div class="blog_box1"><a href="blogpage/index.php?id=?<?php echo $id; ?>"><img src="cms/cms_picture/<?php echo h($imgfile); ?>" alt=""></a></div>
             <div class="blog_box2">
-              <p class="blog_days"><?php echo h($date); ?></p><?php echo h($title); ?>
+              <p class="blog_days"><?php echo h($date); ?></p>
+              <a style="display: inline;" href="blogpage/index.php?id=?<?php echo $id; ?>"><?php echo h($title); ?></a>
             </div>
           </div>
           <?php endwhile; ?>

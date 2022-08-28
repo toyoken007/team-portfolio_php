@@ -77,7 +77,7 @@ $id = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
     </div>
   </header>
   <main id="reserve_body">
-    <p class="header_txt">Demosite Hair TOYO【インヴィンシブル ヘアー マーダ】　ネット予約ページ</p>
+    <p class="header_txt">Demosite Hair TOYO【デモサイト ヘアー マーダ】　ネット予約ページ</p>
     <section class="shop_wrap" id="shop_wrap">
       <ul class="detail_wrap">
         <li class="shop_img"><img src="https://placehold.jp/150x150.png" alt="ダミー画像"></li>
@@ -163,7 +163,7 @@ $id = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
                           <p class="tag"><?php echo h($value); ?></p>
                         <?php endforeach; ?>
                       </li>
-                      <li class="price"><?php echo h($nedan); ?></li>
+                      <li class="price">¥<?php echo h($nedan); ?></li>
                     </ul>
                   </li>
                   <li class="section_title">

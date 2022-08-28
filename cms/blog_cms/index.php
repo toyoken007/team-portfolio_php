@@ -71,24 +71,25 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   if (isset($_SESSION['form']) && isset($_SESSION['category'])) {
     $post = $_SESSION['form'];
     $post['category'] = $_SESSION['category'];
-  }
-  if (is_array($post['category'])) {
 
-    foreach ($post['category'] as $key => $value) {
-      if ($value == 'News') {
-        $chk1 = 'checked';
-      }
-      if ($value == 'お客様の髪の未来を守る') {
-        $chk2 = 'checked';
-      }
-      if ($value == 'ブログ') {
-        $chk3 = 'checked';
-      }
-      if ($value == '育毛') {
-        $chk4 = 'checked';
+    if (is_array($post['category'])) {
+
+      foreach ($post['category'] as $key => $value) {
+        if ($value == 'News') {
+          $chk1 = 'checked';
+        }
+        if ($value == 'お客様の髪の未来を守る') {
+          $chk2 = 'checked';
+        }
+        if ($value == 'ブログ') {
+          $chk3 = 'checked';
+        }
+        if ($value == '育毛') {
+          $chk4 = 'checked';
+        }
       }
     }
-  }
+  }   
 }
 ?>
 <!DOCTYPE html>

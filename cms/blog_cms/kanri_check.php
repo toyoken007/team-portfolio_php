@@ -28,8 +28,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     die($db->error);
   }
 
-  unset($_SESSION['form']);
-  unset($_SESSION['category']);
+  unset($_SESSION);
+  if (ini_get("session.use_cookies")) {
+    $params = session_get_cookie_params();
+    setcookie(
+      session_name(),
+      '',
+      time() - 42000,
+      $params["path"],
+      $params["domain"],
+      $params["secure"],
+      $params["httponly"]
+    );
+  }
+
+  // 最終的に、セッションを破壊する
+  session_destroy();
   header('Location: ok.html');
   exit();
 }
@@ -98,7 +112,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <p>画像ファイル名 : </p>
               </th>
               <td class="cms_img">
-                <img src="../cms_picture/<?php echo h($post['imgfile']); ?>" alt=""> 
+                <img src="../cms_picture/<?php echo h($post['imgfile']); ?>" alt="">
               </td>
             </tr>
           </table>
