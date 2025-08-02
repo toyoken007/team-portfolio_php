@@ -101,7 +101,7 @@ if ($post['sex'] === '女性') {
   <header>
     <h1>Entry form</h1>
   </header>
-  <main>
+  <main class="entry_page">
     <div class="annai">
       <p>必要事項をご入力の上、確認ボタンを押してください。<br>
         内容を確認し、担当よりご連絡させていただきます。</p>
@@ -114,92 +114,94 @@ if ($post['sex'] === '女性') {
       <form action="" method="post">
         <div>
           <table>
-            <tr>
-              <th>
-                <p><span>*</span>お名前</p>
-              </th>
-              <td>
-                <input type="text" name="name" value="<?php echo h($post['name']); ?>">
-                <?php if (isset($error['name']) && $error['name'] === 'blank') : ?>
-                  <p class="error">*お名前を入力してください。</p>
-                <?php endif; ?>
-              </td>
-            </tr>
-            <tr>
-              <th>
-                <p><span>*</span>フリガナ</p>
-              </th>
-              <td>
-                <input type="text" name="kana" value="<?php echo h($post['kana']); ?>">
-                <?php if (isset($error['kana']) && $error['kana'] === 'blank') : ?>
-                  <p class="error">*フリガナを入力してください。</p>
-                <?php endif; ?>
-              </td>
-            </tr>
-            <tr>
-              <th>
-                <p><span>*</span>性別</p>
-              </th>
-              <td class="sex">
-                <input class="sex" type="radio" name="sex" value="男性" <?php if($men === 'check') echo 'checked' ?>> <span>男性</span><br>
-                <input class="sex" type="radio" name="sex" value="女性" <?php if($women === 'check') echo 'checked' ?>> <sapn>女性</span>
-                  <?php if (isset($error['sex']) && $error['sex'] === 'blank') : ?>
-                    <p class="error">*性別を選んでください</p>
+            <tbody>
+              <tr>
+                <th>
+                  <p><span>*</span>お名前</p>
+                </th>
+                <td>
+                  <input type="text" name="name" value="<?php echo h($post['name']); ?>">
+                  <?php if (isset($error['name']) && $error['name'] === 'blank') : ?>
+                    <p class="error">*お名前を入力してください。</p>
                   <?php endif; ?>
-              </td>
-            </tr>
-            <tr>
-              <th>
-                <p>郵便番号</p>
-              </th>
-              <td>
-                <input type="text" name="postcord" value="<?php echo h($post['postcord']); ?>">
-              </td>
-            </tr>
-            <tr>
-              <th>
-                <p><span>*</span>住所</p>
-              </th>
-              <td>
-                <input type="text" name="addres" value="<?php echo h($post['addres']); ?>">
-                <?php if (isset($error['addres']) && $error['addres'] === 'blank') : ?>
-                  <p class="error">*住所を入力してください。</p>
-                <?php endif; ?>
-              </td>
-            </tr>
-            <tr>
-              <th>
-                <p><span>*</span>電話番号</p>
-              </th>
-              <td>
-                <input type="text" name="tell" value="<?php echo h($post['tell']); ?>">
-                <?php if (isset($error['tell']) && $error['tell'] === 'blank') : ?>
-                  <p class="error">*電話番号を入力してください。</p>
-                <?php endif; ?>
-              </td>
-            </tr>
-            <tr>
-              <th>
-                <p><span>*</span>メールアドレス</p>
-              </th>
-              <td>
-                <input type="email" name="email" value="<?php echo h($post['email']); ?>">
-                <?php if (isset($error['email']) && $error['email'] === 'blank') : ?>
-                  <p class="error">*メールアドレスを入力して下さい</p>
-                <?php endif; ?>
-                <?php if (isset($error['email']) && $error['email'] === 'email') : ?>
-                  <p class="error">*メールアドレスを正しく入力して下さい</p>
-                <?php endif; ?>
-              </td>
-            </tr>
-            <tr>
-              <th>
-                <p>備考・ご質問等</p>
-              </th>
-              <td>
-                <textarea name="question" id="" cols="60" rows="15"><?php echo h($post['question']); ?></textarea>
-              </td>
-            </tr>
+                </td>
+              </tr>
+              <tr>
+                <th>
+                  <p><span>*</span>フリガナ</p>
+                </th>
+                <td>
+                  <input type="text" name="kana" value="<?php echo h($post['kana']); ?>">
+                  <?php if (isset($error['kana']) && $error['kana'] === 'blank') : ?>
+                    <p class="error">*フリガナを入力してください。</p>
+                  <?php endif; ?>
+                </td>
+              </tr>
+              <tr>
+                <th>
+                  <p><span>*</span>性別</p>
+                </th>
+                <td class="sex">
+                  <input class="sex" type="radio" name="sex" value="男性" <?php if ($men === 'check') echo 'checked' ?>> <span>男性</span><br>
+                  <input class="sex" type="radio" name="sex" value="女性" <?php if ($women === 'check') echo 'checked' ?>> <span>女性</span>
+                    <?php if (isset($error['sex']) && $error['sex'] === 'blank') : ?>
+                      <p class="error">*性別を選んでください</p>
+                    <?php endif; ?>
+                </td>
+              </tr>
+              <tr>
+                <th>
+                  <p>郵便番号</p>
+                </th>
+                <td>
+                  <input type="text" name="postcord" value="<?php echo h($post['postcord']); ?>">
+                </td>
+              </tr>
+              <tr>
+                <th>
+                  <p><span>*</span>住所</p>
+                </th>
+                <td>
+                  <input type="text" name="addres" value="<?php echo h($post['addres']); ?>">
+                  <?php if (isset($error['addres']) && $error['addres'] === 'blank') : ?>
+                    <p class="error">*住所を入力してください。</p>
+                  <?php endif; ?>
+                </td>
+              </tr>
+              <tr>
+                <th>
+                  <p><span>*</span>電話番号</p>
+                </th>
+                <td>
+                  <input type="text" name="tell" value="<?php echo h($post['tell']); ?>">
+                  <?php if (isset($error['tell']) && $error['tell'] === 'blank') : ?>
+                    <p class="error">*電話番号を入力してください。</p>
+                  <?php endif; ?>
+                </td>
+              </tr>
+              <tr>
+                <th>
+                  <p><span>*</span>メールアドレス</p>
+                </th>
+                <td>
+                  <input type="email" name="email" value="<?php echo h($post['email']); ?>">
+                  <?php if (isset($error['email']) && $error['email'] === 'blank') : ?>
+                    <p class="error">*メールアドレスを入力して下さい</p>
+                  <?php endif; ?>
+                  <?php if (isset($error['email']) && $error['email'] === 'email') : ?>
+                    <p class="error">*メールアドレスを正しく入力して下さい</p>
+                  <?php endif; ?>
+                </td>
+              </tr>
+              <tr>
+                <th>
+                  <p>備考・ご質問等</p>
+                </th>
+                <td class="textarea">
+                  <textarea name="question" id="" cols="60" rows="15"><?php echo h($post['question']); ?></textarea>
+                </td>
+              </tr>
+            </tbody>
           </table>
         </div>
         <div class="submitbox">

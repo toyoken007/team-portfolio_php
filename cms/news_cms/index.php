@@ -71,6 +71,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>管理画面</title>
+  <link rel="stylesheet" href="../css/style.css">
 </head>
 
 <body>
@@ -89,7 +90,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       </div>
       <div>
         <h3>コメント</h3>
-        <textarea name="comment" id="" cols="70" rows="10"><?php echo h($post['comment']); ?></textarea>
+        <textarea name="comment" id="" cols="70" rows="10" class="kanri_comment"><?php echo h($post['comment']); ?></textarea>
       </div>
       <h3>画像</h3>
       <div>
@@ -102,7 +103,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   </main>
   <footer>
     <div style="margin-top: 50px">
-      <a href="../index.html">メインメニューへ</a>
+      <a href="../index.php">メインメニューへ</a>
     </div>
     <div style="margin: 50px 0">
       <a href="../../news/index.php">Newsページへ</a>

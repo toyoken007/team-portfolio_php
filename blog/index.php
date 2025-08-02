@@ -48,30 +48,41 @@ $id = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
   <header class="header">
     <div class="header_wrap">
       <div class="header_top">
-        <a href="../index.php">
+        <a href="index.php">
           <p>Demosite Hair<span class="header_red">TOYO</span></p>
         </a>
       </div>
-      <nav class="nav">
+      <nav class="nav" id="js_nav">
         <ul class="list-menu">
-          <li><a href="../concept/index.html">Concept</a>
+          <li class="title">Demosite Hair<span>TOYO</span>
           </li>
-          <li><a href="../menu/index.html">Menu</a>
+          <li><a href="../index.php">top</a>
           </li>
-          <li><a href="../about/index.html">About</a>
+          <li><a href="../index.php">top</a>
           </li>
-          <li><a href="../gallery/index.html">Gallery </a>
+          <li><a href="../concept/index.php">Concept</a>
           </li>
-          <li><a href="../recruit/index.html">Recruit </a>
+          <li><a href="../menu/index.php">Menu</a>
           </li>
-          <li><a href="../contact/index.html">Contact </a>
+          <li><a href="../about/index.php">About</a>
+          </li>
+          <li><a href="../gallery/index.php">Gallery </a>
+          </li>
+          <li><a href="../recruit/index.php">Recruit </a>
+          </li>
+          <li><a href="#contact">Contact </a>
+          </li>
+          <li class="sp_size"><a href="#">blog </a>
+          </li>
+          <li class="sp_size"><a href="../news/index.php">news </a>
           </li>
           <li><a href="../reserve/index.php">Reserve </a>
           </li>
-          <li><a href="../cms/index.html">管理画面 </a>
-          </li>
         </ul>
       </nav>
+      <div class="ham_reseve"><a href="../reserve/index.php">Reserve </a>
+      </div>
+      <button class="openbtn" id="js_hamburger"><span> </span><span> </span><span></span></button>
     </div>
   </header>
   <main class="news_page">
@@ -236,7 +247,7 @@ $id = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
         </div>
       </div>
     </div>
-    <div class="contact">
+    <div class="contact" id="contact">
       <div class="contact_box">
         <h4>Contact </h4>
         <p class="contact_comment">ご予約は全て電話にて承っております。</p>お気軽にご連絡くださいませ。

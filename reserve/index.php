@@ -1,7 +1,30 @@
 <?php
+session_start();
 require('../library/library.php');
 
+if (!isset($_SESSION['id'])) {
+  $_SESSION['id'] = '';
+}
+
+if (!isset($hearmenu)) {
+  $hearmenu = '';
+}
+
 $db = dbconnect();
+$stmt = $db->prepare('select id from member');
+if (!$stmt) {
+  die($db->error);
+}
+$succes = $stmt->execute();
+if (!$succes) {
+  die($db->error);
+}
+
+$stmt->bind_result($id);
+$stmt->fetch();
+
+$member_id = $id;
+
 
 $id = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
 
@@ -47,7 +70,7 @@ $id = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
 </head>
 
 <body>
-  <header class="header">
+  <header class="reserve_header">
     <div class="header_wrap">
       <div class="header_top">
         <a href="../index.php">
@@ -70,8 +93,27 @@ $id = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
           </li>
           <li><a href="../reserve/index.php">Reserve </a>
           </li>
-          <li><a href="../cms/index.html">管理画面 </a>
-          </li>
+          <?php
+          // $db = dbconnect();
+          // $stmt = $db->prepare('select id from member');
+          // if (!$stmt) {
+          //   die($db->error);
+          // }
+          // $succes = $stmt->execute();
+          // if (!$succes) {
+          //   die($db->error);
+          // }
+
+          // $stmt->bind_result($id);
+          // $stmt->fetch();
+
+          // if ($_SESSION['id'] === $id) :
+          if ($_SESSION['id']) :
+          ?>
+            <div class="cms_top">
+              <a href="../cms/index.php">管理画面</a>
+            </div>
+          <?php endif; ?>
         </ul>
       </nav>
     </div>
@@ -127,6 +169,7 @@ $id = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
     <section class="shop_list_deta" id="shop_list_deta">
       <ul class="shop_card_list">
         <?php
+        $db = dbconnect();
         $counts = $db->query('select count(*) as cnt from news_cms');
         $count = $counts->fetch_assoc();
         $max_page = floor(($count['cnt'] + 1) / 12 + 1);
@@ -147,8 +190,6 @@ $id = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
         while ($stmt->fetch()) :
 
           $hearmenu = unserialize($hearmenu);
-
-
 
         ?>
           <li class="card_lists">
@@ -186,14 +227,19 @@ $id = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
               </li>
               <li class="reserve">
                 <ul class="reserve_inner">
-                  <div class="edit_wrap">
-                    <div class="edit_box">
-                      <a href="../cms/reserve_update/index.php?id=<?php echo $id; ?>">編集</a>
+                  <?php
+                  if ($_SESSION['id']) :
+                  ?>
+                    <div class="edit_wrap">
+                      <div class="edit_box">
+                        <a href="../cms/reserve_update/index.php?id=<?php echo $id; ?>">編集</a>
+                      </div>
+                      <div class="edit_box">
+                        <a href="../cms/reserve_delete/index.php?id=<?php echo $id; ?>">削除</a>
+                      </div>
                     </div>
-                    <div class="edit_box">
-                      <a href="../cms/reserve_delete/index.php?id=<?php echo $id; ?>">削除</a>
-                    </div>
-                  </div>
+                  <?php endif; ?>
+
                   <li class="inner_coupon_btn"><a href="">このクーポンで<br>空席確認・予約する</a></li>
                   <li class="inner_addition_btn"><a href="">メニューを追加して予約</a></li>
                 </ul>
@@ -204,7 +250,7 @@ $id = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
       </ul>
     </section>
   </main>
-  <footer>
+  <footer class="reserve_footer">
     <div class="contact_wrap">
       <div class="contact_box">
         <p>Demosite Hair TOYO </p>

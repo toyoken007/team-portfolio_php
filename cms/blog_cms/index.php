@@ -145,7 +145,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   </main>
   <footer>
     <div style="margin-top: 50px">
-      <a href="../index.html">メインメニューへ</a>
+      <a href="../index.php">メインメニューへ</a>
     </div>
     <div style="margin: 50px 0">
       <a href="../../blog/index.php">Blogページへ</a>

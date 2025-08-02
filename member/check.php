@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-require('library/library.php');
+require('../library/library.php');
 
 if (!isset($_SESSION['form'])) {
 	header('Location: index.php');
@@ -73,7 +73,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 						</tr>
 						<tr>
 							<th>
-								<p>お問い合わせ内容 : </p>
+								<p>パスワード : </p>
 							</th>
 							<td><?php echo h($post['password']); ?></td>
 						</tr>

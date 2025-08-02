@@ -1,6 +1,6 @@
 <?php 
 session_start();
-require('library/library.php');
+require('../library/library.php');
 $error = [];
 $email = '';
 $password = '';
@@ -34,6 +34,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 			header('Location: ../cms/index.php');
 			exit();
+			// var_dump($id);
 		} else {
 			$error['login'] = 'failed';
 		}
@@ -71,13 +72,24 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 				<p>パスワード</p>
 				<input type="text" name="password" value="<?php echo h($password); ?>">
 			</div>
+			<br>
 			<div>
 				<input type="submit" value="ログインする">
 			</div>
 		</form>
+		
 		<a href="index.php">会員登録画面へ</a>
 		<br>
 		<a href="../index.php">ホームページのトップへ</a>
+		<hr>
+		<div>
+			<p>お試しアカウント</p>
+			<ul>
+				<li>メールアドレス:master@gmail.com</li>
+				<li>パスワード:1234</li>
+			</ul>
+			<p>※コピペして使ってください。</p>
+		</div>
 	</main>
 </body>
 

@@ -58,7 +58,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   <header>
     <h1>送信内容の確認</h1>
   </header>
-  <main>
+  <main class="check_page">
     <div class="annai">
       <p>必要事項を確認の上、送信ボタンを押してください。<br>
         内容を確認し、担当よりご連絡させていただきます。</p>

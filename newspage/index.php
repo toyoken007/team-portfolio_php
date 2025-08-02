@@ -1,4 +1,5 @@
 <?php
+session_start();
 require('../library/library.php');
 
 $db = dbconnect();
@@ -60,7 +61,7 @@ $stmt->fetch();
 </head>
 
 <body>
-  <header class="header">
+  <!-- <header class="header">
     <div class="header_wrap">
       <div class="header_top">
         <a href="../index.php">
@@ -83,10 +84,57 @@ $stmt->fetch();
           </li>
           <li><a href="../reserve/index.php">Reserve </a>
           </li>
-          <li><a href="../cms/index.html">管理画面 </a>
+          <?php
+          // if ($_SESSION['id']) :
+          ?>
+            <div class="cms_top">
+              <a href="../cms/index.php">管理画面</a>
+            </div>
+          <?php
+          // endif;
+          ?>
+        </ul>
+      </nav>
+    </div>
+  </header> -->
+  <header class="header">
+    <div class="header_wrap">
+      <div class="header_top">
+        <a href="index.php">
+          <p>Demosite Hair<span class="header_red">TOYO</span></p>
+        </a>
+      </div>
+      <nav class="nav" id="js_nav">
+        <ul class="list-menu">
+          <li class="title">Demosite Hair<span>TOYO</span>
+          </li>
+          <li><a href="../index.php">top</a>
+          </li>
+          <li><a href="../index.php">top</a>
+          </li>
+          <li><a href="../concept/index.php">Concept</a>
+          </li>
+          <li><a href="../menu/index.php">Menu</a>
+          </li>
+          <li><a href="../about/index.php">About</a>
+          </li>
+          <li><a href="../gallery/index.php">Gallery </a>
+          </li>
+          <li><a href="../recruit/index.php">Recruit </a>
+          </li>
+          <li><a href="#contact">Contact </a>
+          </li>
+          <li class="sp_size"><a href="../blog/index.php">blog </a>
+          </li>
+          <li class="sp_size"><a href="#">news </a>
+          </li>
+          <li><a href="../reserve/index.php">Reserve </a>
           </li>
         </ul>
       </nav>
+      <div class="ham_reseve"><a href="../reserve/index.php">Reserve </a>
+      </div>
+      <button class="openbtn" id="js_hamburger"><span> </span><span> </span><span></span></button>
     </div>
   </header>
   <main class="newspage_page">
@@ -115,6 +163,9 @@ $stmt->fetch();
             <img src="../cms/cms_picture/<?php echo h($imgfile); ?>" alt="">
           <?php endif; ?>
         </div>
+        <?php
+        // if ($_SESSION['id']) :
+        ?>
         <div class="edit_wrap">
           <div class="edit_box">
             <a href="../cms/news_update/index.php?id=<?php echo $id; ?>">編集</a>
@@ -123,6 +174,9 @@ $stmt->fetch();
             <a href="../cms/news_delete/index.php?id=<?php echo $id; ?>">削除</a>
           </div>
         </div>
+        <?php
+        // endif; 
+        ?>
         <div class="newspage_share">
           <div class="share">
             <p>Share</p>
@@ -229,7 +283,7 @@ $stmt->fetch();
         </div>
       </div>
     </div>
-    <div class="contact">
+    <div class="contact" id="contact">
       <div class="contact_box">
         <h4>Contact </h4>
         <p class="contact_comment">ご予約は全て電話にて承っております。</p>お気軽にご連絡くださいませ。

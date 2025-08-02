@@ -18,11 +18,16 @@
   <title>About</title>
   <link rel="stylesheet" href="../css/style.css">
   <script>
-    (function (i, s, o, g, r, a, m) {
-      i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+    (function(i, s, o, g, r, a, m) {
+      i['GoogleAnalyticsObject'] = r;
+      i[r] = i[r] || function() {
         (i[r].q = i[r].q || []).push(arguments)
-      }, i[r].l = 1 * new Date(); a = s.createElement(o),
-        m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+      }, i[r].l = 1 * new Date();
+      a = s.createElement(o),
+        m = s.getElementsByTagName(o)[0];
+      a.async = 1;
+      a.src = g;
+      m.parentNode.insertBefore(a, m)
     })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
 
     ga('create', 'UA-XXXXXXXX-Y', 'example.com');
@@ -34,30 +39,41 @@
   <header class="header">
     <div class="header_wrap">
       <div class="header_top">
-        <a href="../index.php">
+        <a href="index.php">
           <p>Demosite Hair<span class="header_red">TOYO</span></p>
         </a>
       </div>
-      <nav class="nav">
+      <nav class="nav" id="js_nav">
         <ul class="list-menu">
-          <li><a href="../concept/index.html">Concept</a>
+          <li class="title">Demosite Hair<span>TOYO</span>
           </li>
-          <li><a href="../menu/index.html">Menu</a>
+          <li><a href="../index.php">top</a>
           </li>
-          <li><a href="../about/index.html">About</a>
+          <li><a href="../index.php">top</a>
           </li>
-          <li><a href="../gallery/index.html">Gallery </a>
+          <li><a href="../concept/index.php">Concept</a>
           </li>
-          <li><a href="../recruit/index.html">Recruit </a>
+          <li><a href="../about/index.php">Menu</a>
           </li>
-          <li><a href="../contact/index.html">Contact </a>
+          <li><a href="#">About</a>
+          </li>
+          <li><a href="../gallery/index.php">Gallery </a>
+          </li>
+          <li><a href="../recruit/index.php">Recruit </a>
+          </li>
+          <li><a href="#contact">Contact </a>
+          </li>
+          <li class="sp_size"><a href="../blog/index.php">blog </a>
+          </li>
+          <li class="sp_size"><a href="../news/index.php">news </a>
           </li>
           <li><a href="../reserve/index.php">Reserve </a>
           </li>
-          <li><a href="../cms/index.html">管理画面 </a>
-          </li>
         </ul>
       </nav>
+      <div class="ham_reseve"><a href="../reserve/index.php">Reserve </a>
+      </div>
+      <button class="openbtn" id="js_hamburger"><span> </span><span> </span><span></span></button>
     </div>
   </header>
   <main class="about_page">
@@ -92,8 +108,9 @@
           <p class="p1">熊本　文太（仮名）</p>
           <p class="p2">Kumamoto Monta</p>
         </div>
-        <div class="stylist_comment"> </div>
-        <p>四季を通してワクワクするような髪とデザインをご提供し、お客様の居心地良さを1番に考えた接客を心がけています。</p>続けてご来店いただけるような空間づくりも大切にしていますので、お気軽にご来店ください。
+        <div class="stylist_comment">
+          <p>四季を通してワクワクするような髪とデザインをご提供し、お客様の居心地良さを1番に考えた接客を心がけています。</p>続けてご来店いただけるような空間づくりも大切にしていますので、お気軽にご来店ください。</p>
+        </div>
         <div class="stylist_sns">
           <div class="sns1"><img src="https://placehold.jp/21x21.png" alt="カットイメージ画像"></div>
         </div>
@@ -223,16 +240,19 @@
       <div class="contact_box">
         <p>Demosite Hair TOYO </p>
         <div class="list_box">
-          <div class="list"><a href="../concept/index.html">Concept</a><a href="../menu/index.html">Menu</a><a href="../about/index.html">About</a></div>
-          <div class="list"><a href="../recruit/index.html">Recruit</a><a href="../contact/index.html">Contact</a><a href="">Privacy policy</a></div>
-          <div class="list"><a href="../news/index.php">News</a><a href="../gallery/index.html">Gallery</a><a href="../blog/index.php">Blog </a></div>
+          <div class="list"><a href="../concept/index.html">Concept</a><a href="../menu/index.html">Menu</a><a
+              href="../about/index.html">About</a></div>
+          <div class="list"><a href="../recruit/index.html">Recruit</a><a href="../contact/index.html">Contact</a><a
+              href="">Privacy policy</a></div>
+          <div class="list"><a href="../news/index.php">News</a><a href="../gallery/index.html">Gallery</a><a
+              href="../blog/index.php">Blog </a></div>
         </div>
         <div class="copyright">
           <p>&copy; 2022 Demosite Hair TOYO</p>
         </div>
       </div>
     </div>
-    <div class="contact">
+    <div class="contact" id="contact">
       <div class="contact_box">
         <h4>Contact </h4>
         <p class="contact_comment">ご予約は全て電話にて承っております。</p>お気軽にご連絡くださいませ。
@@ -242,7 +262,9 @@
   </footer>
   <script src="//ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js"></script>
-  <script>(window.jQuery || document.write('<script src="js/jquery-1.11.2.min.js"><\/script>'));</script>
+  <script>
+    (window.jQuery || document.write('<script src="js/jquery-1.11.2.min.js"><\/script>'));
+  </script>
   <script src="../js/main.js"></script>
   <script src="../js/slick_slide.js"></script>
 </body>
